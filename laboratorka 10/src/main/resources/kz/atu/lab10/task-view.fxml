@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="kz.atu.lab10.TaskController">
+    <top>
+        <ToolBar>
+            <Button text="Открыть" onAction="#onOpen"/>
+            <Button text="Сохранить" onAction="#onSave"/>
+            <Separator orientation="VERTICAL"/>
+            <Label text="Поиск: "/>
+            <TextField fx:id="txtSearch" promptText="Введите заголовок для фильтрации..."/>
+        </ToolBar>
+    </top>
+    <left>
+        <ListView fx:id="listTasks" prefWidth="250"/>
+    </left>
+    <center>
+        <VBox spacing="10" style="-fx-padding: 14;">
+            <Label text="Заголовок задачи:"/>
+            <TextField fx:id="txtTitle" promptText="Заголовок"/>
+            
+            <Label text="Приоритет:"/>
+            <ComboBox fx:id="cmbPriority" prefWidth="150"/>
+            
+            <Label text="Текст задачи:"/>
+            <TextArea fx:id="txtBody" promptText="Текст заметки / задачи" VBox.vgrow="ALWAYS"/>
+            
+            <HBox spacing="10">
+                <Button text="Добавить" onAction="#onAdd"/>
+                <Button text="Изменить" onAction="#onEdit"/>
+                <Button text="Удалить" onAction="#onDelete"/>
+            </HBox>
+        </VBox>
+    </center>
+    <bottom>
+        <HBox style="-fx-padding: 5; -fx-background-color: #eeeeee;">
+            <Label fx:id="lblStatus" text="Готово"/>
+        </HBox>
+    </bottom>
+</BorderPane>
