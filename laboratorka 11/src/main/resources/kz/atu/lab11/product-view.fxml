@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="kz.atu.lab11.controller.ProductController">
+   <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+   <top>
+      <HBox spacing="10" alignment="CENTER_LEFT">
+         <padding><Insets bottom="10"/></padding>
+         <Label text="Поиск по названию:"/>
+         <TextField fx:id="txtSearch" promptText="Введите название" HBox.hgrow="ALWAYS"/>
+         <Label text="Категория:"/>
+         <ComboBox fx:id="cmbCategoryFilter" prefWidth="160"/>
+      </HBox>
+   </top>
+   <center>
+      <TableView fx:id="tableProducts">
+         <columns>
+            <TableColumn fx:id="colName" text="Название" prefWidth="300"/>
+            <TableColumn fx:id="colCategory" text="Категория" prefWidth="200"/>
+            <TableColumn fx:id="colPrice" text="Цена" prefWidth="120"/>
+         </columns>
+      </TableView>
+   </center>
+   <bottom>
+      <VBox spacing="8">
+         <padding><Insets top="10"/></padding>
+         <HBox spacing="10" alignment="CENTER_LEFT">
+            <TextField fx:id="txtName" promptText="Название" HBox.hgrow="ALWAYS"/>
+            <TextField fx:id="txtCategory" promptText="Категория" prefWidth="150"/>
+            <TextField fx:id="txtPrice" promptText="Цена, тг" prefWidth="110"/>
+         </HBox>
+         <HBox spacing="10" alignment="CENTER_LEFT">
+            <Button text="Добавить" onAction="#onAdd"/>
+            <Button text="Изменить" onAction="#onUpdate"/>
+            <Button text="Удалить" onAction="#onDelete"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <VBox alignment="CENTER_RIGHT">
+               <Label fx:id="lblCount" text="Найдено товаров: 0"/>
+               <Label fx:id="lblAverage" text="Средняя цена товаров: 0.00"/>
+            </VBox>
+         </HBox>
+      </VBox>
+   </bottom>
+</BorderPane>
