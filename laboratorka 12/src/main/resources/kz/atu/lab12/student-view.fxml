@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="kz.atu.lab12.controller.StudentController"
+            prefHeight="600.0" prefWidth="880.0">
+    <top>
+        <VBox spacing="8.0">
+            <padding>
+                <Insets bottom="8.0" left="12.0" right="12.0" top="12.0"/>
+            </padding>
+            <Label text="Каталог студентов" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+            <TextField fx:id="txtSearch" promptText="Поиск по ФИО (или по группе)..."/>
+        </VBox>
+    </top>
+    <center>
+        <TableView fx:id="tableStudents" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="colId" prefWidth="70.0" text="ID"/>
+                <TableColumn fx:id="colName" prefWidth="360.0" text="ФИО"/>
+                <TableColumn fx:id="colGroup" prefWidth="170.0" text="Группа"/>
+                <TableColumn fx:id="colGpa" prefWidth="100.0" text="GPA"/>
+            </columns>
+            <BorderPane.margin>
+                <Insets left="12.0" right="12.0"/>
+            </BorderPane.margin>
+        </TableView>
+    </center>
+    <bottom>
+        <VBox spacing="10.0">
+            <padding>
+                <Insets bottom="12.0" left="12.0" right="12.0" top="10.0"/>
+            </padding>
+            <GridPane hgap="10.0" vgap="8.0">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="70.0"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+                <Label text="ФИО" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="txtName" promptText="Иванов Иван Иванович"
+                           GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Label text="Группа" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextField fx:id="txtGroup" promptText="ИС 24-22"
+                           GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Label text="GPA" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <TextField fx:id="txtGpa" promptText="от 0 до 4, например 3.5"
+                           GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+            </GridPane>
+            <HBox spacing="10.0">
+                <Button mnemonicParsing="false" onAction="#onAdd" text="Добавить"/>
+                <Button mnemonicParsing="false" onAction="#onUpdate" text="Изменить"/>
+                <Button mnemonicParsing="false" onAction="#onDelete" text="Удалить"/>
+                <Button mnemonicParsing="false" onAction="#onRefresh" text="Обновить"/>
+                <Button mnemonicParsing="false" onAction="#onClear" text="Очистить поля"/>
+                <Button mnemonicParsing="false" onAction="#onExport" text="Экспорт в CSV"/>
+            </HBox>
+            <Label fx:id="lblStatus" text="Загрузка..."/>
+        </VBox>
+    </bottom>
+</BorderPane>

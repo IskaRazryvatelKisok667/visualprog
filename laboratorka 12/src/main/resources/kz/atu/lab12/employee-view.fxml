@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="kz.atu.lab12.controller.EmployeeController"
+            prefHeight="600.0" prefWidth="880.0">
+    <top>
+        <VBox spacing="8.0">
+            <padding>
+                <Insets bottom="8.0" left="12.0" right="12.0" top="12.0"/>
+            </padding>
+            <Label text="Каталог сотрудников" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+            <TextField fx:id="txtEmpSearch" promptText="Поиск по ФИО (или по отделу)..."/>
+        </VBox>
+    </top>
+    <center>
+        <TableView fx:id="tableEmployees" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="colEmpId" prefWidth="70.0" text="ID"/>
+                <TableColumn fx:id="colEmpName" prefWidth="360.0" text="ФИО"/>
+                <TableColumn fx:id="colEmpDept" prefWidth="170.0" text="Отдел"/>
+                <TableColumn fx:id="colEmpExp" prefWidth="110.0" text="Стаж, лет"/>
+            </columns>
+            <BorderPane.margin>
+                <Insets left="12.0" right="12.0"/>
+            </BorderPane.margin>
+        </TableView>
+    </center>
+    <bottom>
+        <VBox spacing="10.0">
+            <padding>
+                <Insets bottom="12.0" left="12.0" right="12.0" top="10.0"/>
+            </padding>
+            <GridPane hgap="10.0" vgap="8.0">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="70.0"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+                <Label text="ФИО" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="txtEmpName" promptText="Петров Пётр Петрович"
+                           GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Label text="Отдел" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextField fx:id="txtEmpDept" promptText="Бухгалтерия"
+                           GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Label text="Стаж, лет" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <TextField fx:id="txtEmpExp" promptText="целое число от 0 до 60"
+                           GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+            </GridPane>
+            <HBox spacing="10.0">
+                <Button mnemonicParsing="false" onAction="#onAdd" text="Добавить"/>
+                <Button mnemonicParsing="false" onAction="#onUpdate" text="Изменить"/>
+                <Button mnemonicParsing="false" onAction="#onDelete" text="Удалить"/>
+                <Button mnemonicParsing="false" onAction="#onRefresh" text="Обновить"/>
+                <Button mnemonicParsing="false" onAction="#onClear" text="Очистить поля"/>
+            </HBox>
+            <Label fx:id="lblEmpStatus" text="Загрузка..."/>
+        </VBox>
+    </bottom>
+</BorderPane>
